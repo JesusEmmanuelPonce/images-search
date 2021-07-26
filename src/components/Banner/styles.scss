@@ -1,6 +1,7 @@
 .banner-wrap {
     align-items: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     background: url("../../static/img/forest.jpg");
@@ -28,13 +29,17 @@
 
         button{
             background: #247547;
-            border: none;
             border-radius: 0 8px 8px 0;
             height: 100%;
+            border: none;
             position: absolute;
             top: 0;
             right: 0;
             width: 70px;
+            
+            &:disabled {
+                background: #6c6c6c;
+            }
 
             svg {
                 color: #fff;
