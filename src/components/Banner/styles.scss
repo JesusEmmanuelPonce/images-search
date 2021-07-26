@@ -1,0 +1,46 @@
+.banner-wrap {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    background: url("../../static/img/forest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 300px;
+
+    .input-wrap{
+        position: relative;
+        border-radius: 0 8px 8px 0;
+        width: 400px;
+
+        input{
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        button{
+            background: #247547;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+
+            svg {
+                color: #fff;
+                font-size: 18px;
+                margin-top: -5px;
+            }
+        }
+    }
+}
