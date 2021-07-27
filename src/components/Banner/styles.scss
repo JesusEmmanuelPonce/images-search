@@ -12,13 +12,13 @@
     height: 300px;
 
     .input-wrap{
-        position: relative;
+        display: flex;
         border-radius: 0 8px 8px 0;
-        width: 400px;
+        width: 600px;
 
         input{
             border: none;
-            border-radius: 8px;
+            border-radius: 8px 0 0 8px;
             padding: 12px;
             width: 100%;
 
@@ -27,24 +27,61 @@
             }
         }
 
-        button{
+        .btn-slider{
+            border: none;
+            width: 65px;
+            
+            svg {
+                // color: #fff;
+                font-size: 18px;
+            }
+        }
+
+        .btn-search{
             background: #247547;
             border-radius: 0 8px 8px 0;
             height: 100%;
             border: none;
-            position: absolute;
-            top: 0;
-            right: 0;
             width: 70px;
             
             &:disabled {
                 background: #6c6c6c;
+                cursor: not-allowed;
             }
 
             svg {
                 color: #fff;
                 font-size: 18px;
                 margin-top: -5px;
+            }
+        }
+    }
+
+    .options-wrap{
+        background: #fff;
+        border-radius: 0 0 8px 8px;
+        border-top: 1px solid #7b7b7b;
+        box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+        height: 40px;
+        width: 550px;
+
+        ul{
+            display: flex;
+            justify-content: space-around;
+
+            margin-top: 5px;
+            width: 100%;
+
+            li{
+                margin-right: 10px;
+
+                select{
+                    border: none;
+
+                    &:focus{
+                        outline: none;
+                    }
+                }
             }
         }
     }
