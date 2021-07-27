@@ -1,4 +1,7 @@
-import { SET_SEARCH } from "../types";
+import {
+    GET_IMAGES,
+    SET_SEARCH,
+} from "../types";
 
 const initialState = {
     allImages: [],
@@ -13,6 +16,11 @@ const initialState = {
 
 const searchReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_IMAGES:
+            return {
+                ...state,
+                allImages: action.payload.images,
+            }
         case SET_SEARCH:
             return {
                 ...state,

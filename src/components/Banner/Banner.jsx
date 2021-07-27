@@ -1,25 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import qs from 'qs';
 
 import Search from '../../static/icons/Search.jsx';
 import SliderV from '../../static/icons/SliderV.jsx';
-import { SetSearchAction } from '../../redux/actions/searchAction.js';
+import {
+    SetSearchAction,
+    GetImagesAction,
+} from '../../redux/actions/searchAction.js';
 import "./styles.scss";
 
-const Banner = ({ SetSearchAction, search }) => {
+const Banner = ({
+    search,
+    GetImagesAction,
+    SetSearchAction,
+}) => {
 
     const changeSearch = ({ target: { name, value } }) => SetSearchAction({ [name]: value });
 
     const handleSearch = async() => {
 
+        const queries = qs.stringify(search);
+
         const key = "22663718-09603ea9170fb559d2ac14e1a";
-        const url = `https://pixabay.com/api/?key=${key}&q=${search}`;
+        const url = `https://pixabay.com/api/?key=${key}&${queries}`;
 
         const response = await fetch(url);
         const data = await response.json();
 
-        SetSearchAction(data);
+        GetImagesAction(data);
 
     };
 
@@ -135,6 +145,7 @@ const mapStateToProps = ({ search }) => ({
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators ({
         SetSearchAction,
+        GetImagesAction,
     }, dispatch )
 )
 
