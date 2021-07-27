@@ -7,10 +7,6 @@ const Banner = () => {
     const [search, setSearch] = useState("");
     const [check, setCheck] = useState(false);
 
-    const handleSearch = () => {
-        
-    }
-
     const changeSearch = ({ target: { value } }) => {
         if(value.length < 1){
             setCheck(false);
@@ -19,6 +15,18 @@ const Banner = () => {
         setSearch(value);
         setCheck(true)
     }
+
+    const handleSearch = async() => {
+
+        const key = "22663718-09603ea9170fb559d2ac14e1a";
+        const url = `https://pixabay.com/api/?key=${key}&q=${search}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        console.log(data);
+
+    };
 
     return (
         <div className="banner-wrap">
