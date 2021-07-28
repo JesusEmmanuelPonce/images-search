@@ -5,6 +5,7 @@ import {
 
 const initialState = {
     allImages: {},
+    isImages: false,
     search: {
         q: "general",
         lang: "",
@@ -20,6 +21,7 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allImages: action.payload.images,
+                isImages: true,
             }
         case SET_SEARCH:
             return {

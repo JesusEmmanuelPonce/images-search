@@ -1,14 +1,22 @@
-import './App.css';
 import Banner from './components/Banner';
 import Images from './components/Images';
+import NoSearch from './components/NoSearch/NoSearch';
+import './App.css';
+import { connect } from 'react-redux';
 
-function App() {
+const App = ({ isImages }) => {
   return (
     <div>
       <Banner />
-      <Images />
+      {
+        isImages ? <Images /> : <NoSearch />
+      }
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = ({ search }) => ({
+  isImages: search?.isImages ?? false,
+});
+
+export default connect(mapStateToProps)(App);

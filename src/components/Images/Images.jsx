@@ -59,7 +59,7 @@ const Images = ({ allImages }) => {
 };
 
 const mapStateToProps = ({ search }) => ({
-    allImages: search?.allImages
+    allImages: search?.allImages ?? {},
 })
 
 export default connect(mapStateToProps)(Images)
