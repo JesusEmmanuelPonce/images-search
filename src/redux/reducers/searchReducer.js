@@ -4,7 +4,7 @@ import {
 } from "../types";
 
 const initialState = {
-    allImages: [],
+    allImages: {},
     search: {
         q: "general",
         lang: "",
