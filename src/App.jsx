@@ -3,14 +3,16 @@ import Images from './components/Images';
 import NoSearch from './components/NoSearch/NoSearch';
 import './App.css';
 import { connect } from 'react-redux';
+import Paginate from './components/Paginate';
 
 const App = ({ isImages }) => {
   return (
-    <div>
+    <div className="app-container">
       <Banner />
       {
         isImages ? <Images /> : <NoSearch />
       }
+      <Paginate />
     </div>
   );
 }
