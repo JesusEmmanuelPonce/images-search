@@ -4,6 +4,7 @@ import NoSearch from './components/NoSearch/NoSearch';
 import './App.css';
 import { connect } from 'react-redux';
 import Paginate from './components/Paginate';
+import Footer from './components/Footer/Footer';
 
 const App = ({ isImages }) => {
   return (
@@ -13,6 +14,7 @@ const App = ({ isImages }) => {
         isImages ? <Images /> : <NoSearch />
       }
       <Paginate />
+      <Footer />
     </div>
   );
 }
