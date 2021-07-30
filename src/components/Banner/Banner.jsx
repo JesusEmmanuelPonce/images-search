@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import qs from 'qs';
@@ -10,13 +10,14 @@ import {
     GetImagesAction,
 } from '../../redux/actions/searchAction.js';
 import "./styles.scss";
-import Waves from '../../static/icons/Waves.jsx';
 
 const Banner = ({
     search,
     GetImagesAction,
     SetSearchAction,
 }) => {
+
+    const [openOptions, setOpenOptions] = useState(false);
 
     const changeSearch = ({ target: { name, value } }) => SetSearchAction({ [name]: value });
 
@@ -34,8 +35,6 @@ const Banner = ({
 
     };
 
-    console.log({search});
-
     return (
         <div className="banner-wrap">
             <div className="input-wrap">
@@ -49,6 +48,7 @@ const Banner = ({
                 <button
                     className="btn-slider"
                     type="button"
+                    onClick={() => setOpenOptions(!openOptions)}
                 >
                     <SliderV />
                 </button>
@@ -60,12 +60,13 @@ const Banner = ({
                     <Search />
                 </button>
             </div>
-            <div className="options-wrap">
-                <ul>
+            <div className={!openOptions ? "options-wrap" : "options-wrap visible"}>
+                <ul className={!openOptions ? "off-select" : "on-select"}>
                     <li>
                         <select
                             name="lang"
                             onChange={changeSearch}
+                            className={!openOptions ? "off-select" : "on-select"}
                         >
                             <option value="">Idioma</option>
                             <option value="es">Español</option>
@@ -77,6 +78,7 @@ const Banner = ({
                         <select
                             name="orientation"
                             onChange={changeSearch}
+                            className={!openOptions ? "off-select" : "on-select"}
                         >
                             <option value="">Orientacion</option>
                             <option value="all">Todo</option>
@@ -88,6 +90,7 @@ const Banner = ({
                         <select
                             name="category"
                             onChange={changeSearch}
+                            className={!openOptions ? "off-select" : "on-select"}
                         >
                             <option value="">Categoría</option>
                             <option value="backgrounds"></option>
@@ -115,6 +118,7 @@ const Banner = ({
                         <select
                             name="colors"
                             onChange={changeSearch}
+                            className={!openOptions ? "off-select" : "on-select"}
                         >
                             <option value="">Color</option>
                             <option value="grayscale">Escalas grises</option>
