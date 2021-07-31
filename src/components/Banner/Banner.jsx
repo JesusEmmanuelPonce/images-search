@@ -6,8 +6,9 @@ import qs from 'qs';
 import Search from '../../static/icons/Search.jsx';
 import SliderV from '../../static/icons/SliderV.jsx';
 import {
-    SetSearchAction,
     GetImagesAction,
+    SetSearchAction,
+    SetTotalPagesAction
 } from '../../redux/actions/searchAction.js';
 import "./styles.scss";
 
@@ -15,6 +16,7 @@ const Banner = ({
     search,
     GetImagesAction,
     SetSearchAction,
+    SetTotalPagesAction
 }) => {
 
     const [openOptions, setOpenOptions] = useState(false);
@@ -23,15 +25,21 @@ const Banner = ({
 
     const handleSearch = async() => {
 
+        const totalPerPage = 20;
         const queries = qs.stringify(search);
-
+        
         const key = "22663718-09603ea9170fb559d2ac14e1a";
-        const url = `https://pixabay.com/api/?key=${key}&${queries}`;
-
+        const url = `https://pixabay.com/api/?key=${key}&${queries}&per_page=${totalPerPage}`;
+        
         const response = await fetch(url);
         const data = await response.json();
-
+        
         GetImagesAction(data);
+        
+        const totalPages = Math.ceil(data.totalHits / totalPerPage);
+
+        SetTotalPagesAction(totalPages);
+
 
     };
 
@@ -93,7 +101,7 @@ const Banner = ({
                             className={!openOptions ? "off-select" : "on-select"}
                         >
                             <option value="">Categoría</option>
-                            <option value="backgrounds"></option>
+                            <option value="backgrounds">Fondos</option>
                             <option value="fashion">Moda</option>
                             <option value="nature">Naturaleza</option>
                             <option value="science">Ciencia</option>
@@ -151,6 +159,7 @@ const mapDispatchToProps = (dispatch) => (
     bindActionCreators ({
         SetSearchAction,
         GetImagesAction,
+        SetTotalPagesAction,
     }, dispatch )
 )
 

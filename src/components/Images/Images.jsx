@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import isValidArray from '../../helpers/isValidArray';
+import randomColor from '../../helpers/randomColor';
+import stringToArray from '../../helpers/stringToArray';
 import Comment from '../../static/icons/Comment';
 import ThumbUp from '../../static/icons/ThumbUp';
 
@@ -26,6 +28,19 @@ const Images = ({ allImages }) => {
                                 alt="..."
                             />
                             <div className="card-body">
+                                <div className="tags-wrap">
+                                    {
+                                        stringToArray(image.tags).map(tag => (
+                                            <span
+                                                key={tag}
+                                                className="tags"
+                                                style={{ background: randomColor() }}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))
+                                    }
+                                </div>
                                 <p className="mb-1">
                                     <span className="thumb">
                                         <ThumbUp />
@@ -44,7 +59,7 @@ const Images = ({ allImages }) => {
                                 <a
                                     href={ image.largeImageURL }
                                     target="_blank"
-                                    className="d-block mt-3"
+                                    className="d-block mt-3 text-end"
                                     rel="noopener noreferrer"
                                 >Ver Imagen</a>
                             </div>

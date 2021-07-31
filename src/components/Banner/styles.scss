@@ -89,6 +89,22 @@
         }
     }
 
+    @media screen and(max-width: 620px) {
+        .input-wrap{
+            width: 500px;
+        }
+
+        .options-wrap{
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+            border-top: 1px solid #7b7b7b;
+            box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+            max-height: 0px;
+            height: 40px;
+            width: 480px;
+        }
+    }
+
     .visible{
         max-height: 40px;
         transition: all ease .3s;

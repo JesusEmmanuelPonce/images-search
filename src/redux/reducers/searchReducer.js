@@ -1,11 +1,13 @@
 import {
     GET_IMAGES,
     SET_SEARCH,
+    SET_TOTAL_PAGES,
 } from "../types";
 
 const initialState = {
     allImages: {},
     isImages: false,
+    totalPages: 1,
     search: {
         q: "general",
         lang: "",
@@ -30,6 +32,11 @@ const searchReducer = (state = initialState, action) => {
                     ...state.search,
                     ...action.payload.data
                 }
+            }
+        case SET_TOTAL_PAGES:
+            return {
+                ...state,
+                totalPages: action.payload.pages
             }
         default:
             return state;
